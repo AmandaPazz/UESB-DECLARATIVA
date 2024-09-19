@@ -35,10 +35,10 @@ somarListaInteiros :: [Int] -> Int
 somarListaInteiros [] = 0
 somarListaInteiros (a : x) = a + somarListaInteiros x
 
--- 7. Elaborar uma funcao para somar o dobro dos elementos de uma lista de inteiros.
-somarDobroInteiros :: [Int] -> Int
-somarDobroInteiros [] = 0
-somarDobroInteiros (a : xs) = 2 * a + somarDobroInteiros xs
+-- 7. Elaborar uma funÃ§Ã£o dobrar os elementos de uma lista de inteiros.
+somarDobroInteiros :: [Int] -> [Int]
+somarDobroInteiros [] = []
+somarDobroInteiros (a : x) = 2 * a : somarDobroInteiros x
 
 -- 8. Elaborar uma funcao para verificar se um elemento e membro de uma lista de inteiros.
 ehMembro :: Int -> [Int] -> Bool
@@ -86,49 +86,50 @@ quickSort :: [Int] -> [Int]
 quickSort [] = []
 quickSort (pivo:xs) = quickSort [x | x <- xs, x <= pivo] ++ [pivo] ++ quickSort [x | x <- xs, x > pivo]
 
--- 13. Elaborar uma função para contar o número de vogais de uma string.
+-- 13. Elaborar uma funï¿½ï¿½o para contar o nï¿½mero de vogais de uma string.
 contVogais :: String -> Int
 contVogais [] = 0
 contVogais (a : x)
-    | a `elem` "aeiouAEIOU" = 1 + contVogais x
+    | elem a "aeiouAEIOU" = 1 + contVogais x
     | otherwise = contVogais x
 
--- 14. Elaborar uma função que receba uma frase e devolva a quantidade de palavras na frase.
+-- 14. Elaborar uma funï¿½ï¿½o que receba uma frase e devolva a quantidade de palavras na frase.
 contPalavras :: String -> Int
 contPalavras frase = length (words  frase)
 
 
--- 15. Elaborar uma função para criptografar uma mensagem utilizando a cifra de César.
+-- 15. Elaborar uma funï¿½ï¿½o para criptografar uma mensagem utilizando a cifra de Cï¿½sar.
 cifraCesar :: Int -> String -> String
 cifraCesar deslocamento mensagem = map (cifraChar deslocamento) mensagem
 
--- Função auxiliar para criptografar um caractere
+-- Funï¿½ï¿½o auxiliar para criptografar um caractere
 cifraChar :: Int -> Char -> Char
 cifraChar deslocamento c
     | isLower c = deslocar 'a' c deslocamento
     | isUpper c = deslocar 'A' c deslocamento
     | otherwise = c
 
--- Função auxiliar para deslocar um caractere, considerando o início do alfabeto
+-- Funï¿½ï¿½o auxiliar para deslocar um caractere, considerando o inï¿½cio do alfabeto
 deslocar :: Char -> Char -> Int -> Char
 deslocar base c deslocamento =
     chr ( ord base + ((ord c - ord base + deslocamento) `mod` 26))
 
--- 16. Elaborar uma função para inverter uma string.
+-- 16. Elaborar uma funï¿½ï¿½o para inverter uma string.
 inverter :: String -> String
 inverter [] = []
 inverter (a : x) =  inverter x ++ [a]
 
--- 17. Elaborar uma função que receba uma frase com letras minúsculas e converta a primeira letra de cada palavra da frase para maiúscula
+-- 17. Elaborar uma funï¿½ï¿½o que receba uma frase com letras minï¿½sculas e converta a primeira letra de cada palavra da frase para maiï¿½scula
 primeiraMaiuscula :: String -> String
 primeiraMaiuscula [] = []
+primeiraMaiuscula (' ': x) = primeiraMaiuscula x 
 primeiraMaiuscula (a : x) = toUpper a : capitalize x
     where 
         capitalize [] = []
         capitalize (' ' : x) = ' ' : primeiraMaiuscula x
         capitalize (a : x) = a : capitalize x
 
--- 18. Elaborar uma função para implementar a busca binária em uma lista de inteiros.
+-- 18. Elaborar uma funï¿½ï¿½o para implementar a busca binï¿½ria em uma lista de inteiros.
 buscaBinaria :: Int -> [Int] -> Bool
 buscaBinaria _ [] = False
 buscaBinaria elem lista
@@ -140,11 +141,11 @@ buscaBinaria elem lista
     primeiraMetade = take (length lista `div` 2) lista
     segundaMetade = drop (length lista `div` 2 + 1) lista
 
--- 20. Elaborar uma função para computar o maior e o menor elemento de uma lista de inteiros.
+-- 20. Elaborar uma funï¿½ï¿½o para computar o maior e o menor elemento de uma lista de inteiros.
 minMaxElem :: [Int] -> (Int, Int)
 minMaxElem lista = (minimum lista, maximum lista)
 
--- 21.  Função para contar o número de letras e palavras de uma frase
+-- 21.  Funï¿½ï¿½o para contar o nï¿½mero de letras e palavras de uma frase
 contCharString :: String -> (Int, Int)
 contCharString frase = (contarLetras frase, contarPalavras frase)
   where
@@ -154,27 +155,37 @@ contCharString frase = (contarLetras frase, contarPalavras frase)
     contarPalavras :: String -> Int
     contarPalavras = length . words
 
--- 22. Elaborar uma função para vericar se uma string é uma palíndroma.
+-- 22. Elaborar uma funï¿½ï¿½o para vericar se uma string ï¿½ uma palï¿½ndroma.
 ehPalindromo :: String -> Bool
 ehPalindromo str = inverter str == str
 
--- 23. Elaborar uma função que receba um nome completo de uma pessoa e mostre os nomes intermediários entre o primeiro e o último sobrenome
+-- 23. Elaborar uma funï¿½ï¿½o que receba um nome completo de uma pessoa e mostre os nomes intermediï¿½rios entre o primeiro e o ï¿½ltimo sobrenome
      --abreviados.
+-- FunÃ§Ã£o principal para abreviar os nomes intermediÃ¡rios
 abreviar :: String -> String
 abreviar nome = unwords (primeiroNome : abreviados ++ [ultimoNome])
-    where
-        palavras = words nome
-        primeiroNome = primeiraMaiuscula (head palavras)
-        ultimoNome = primeiraMaiuscula (last palavras)
-        intermediarios = init (tail palavras)
-        abreviados = map (\x -> toUpper (head x) : ".") intermediarios
+  where
+    palavras = words nome
+    primeiroNome = capitalize (head palavras)
+    ultimoNome = capitalize (last palavras)
+    intermediarios = init (tail palavras)
+    abreviados = abreviarIntermediarios intermediarios
 
+    -- FunÃ§Ã£o para capitalizar a primeira letra de uma palavra
+    capitalize :: String -> String
+    capitalize [] = []
+    capitalize (x:xs) = toUpper x : xs
 
--- 24. Elaborar uma função que determine se um número é perfeito, ou seja, é igual a soma dos seus divisores (exceto o próprio).
+    -- FunÃ§Ã£o recursiva para abreviar os nomes intermediÃ¡rios
+    abreviarIntermediarios :: [String] -> String
+    abreviarIntermediarios [] = []
+    abreviarIntermediarios (x:xs) = (toUpper (head x) : ".") : abreviarIntermediarios xs
+
+-- 24. Elaborar uma funï¿½ï¿½o que determine se um nï¿½mero ï¿½ perfeito, ou seja, ï¿½ igual a soma dos seus divisores (exceto o prï¿½prio).
 ehPerfeito :: Int -> Bool
 ehPerfeito n = sum ([x | x <- [1..n-1], n `mod` x == 0]) == n
 
---25. Elaborar uma função que intercala duas lista de inteiros ordenadas.
+--25. Elaborar uma funï¿½ï¿½o que intercala duas lista de inteiros ordenadas.
 intercala :: [Int] -> [Int] -> [Int]
 intercala [] x = x
 intercala a [] = a
@@ -183,11 +194,11 @@ intercala (a : x) (as : xs)
     | otherwise = as : intercala (a : x) xs
 
 
--- 26. Uma função que devolve True se uma dada lista tem mais que 10 elementos, False caso contrário.
+-- 26. Uma funï¿½ï¿½o que devolve True se uma dada lista tem mais que 10 elementos, False caso contrï¿½rio.
 maisQueDez :: [a] -> Bool
 maisQueDez a = length a > 10 
 
--- 27. Utilizando recursão por cauda (tail recursion) criar uma função para somar os elementos de uma lista de inteiros.
+-- 27. Utilizando recursï¿½o por cauda (tail recursion) criar uma funï¿½ï¿½o para somar os elementos de uma lista de inteiros.
 somaLista :: [Int] -> Int
 somaLista lista = somaAux lista 0
 
@@ -198,30 +209,30 @@ somaAux (a : x) acc = somaAux x (acc + a)
 -- 28. Quantos elementos tem cada uma das seguintes listas?
 
 -- a) ['a','b']
--- R: 2 elementos. A lista contém os caracteres 'a' e 'b'.
+-- R: 2 elementos. A lista contï¿½m os caracteres 'a' e 'b'.
 
 -- b) [['a','b']]
--- R: 1 elemento. A lista contém uma única lista ['a', 'b'].
+-- R: 1 elemento. A lista contï¿½m uma ï¿½nica lista ['a', 'b'].
 
 -- c) [['a','b'], ['c','d']]
--- R: 2 elementos. A lista contém duas listas ['a','b'] e ['c','d'].
+-- R: 2 elementos. A lista contï¿½m duas listas ['a','b'] e ['c','d'].
 
 -- d) [[['a','b']]]
--- R: 1 elemento. A lista contém uma única lista que, por sua vez, contém outra lista ['a','b'].
+-- R: 1 elemento. A lista contï¿½m uma ï¿½nica lista que, por sua vez, contï¿½m outra lista ['a','b'].
 
 -- e) []
--- R: 0 elementos. É uma lista vazia.
+-- R: 0 elementos. ï¿½ uma lista vazia.
 
 -- f) [[]]
--- R: 1 elemento. A lista contém uma única lista vazia.
+-- R: 1 elemento. A lista contï¿½m uma ï¿½nica lista vazia.
 
 -- g) [[],[]]
--- R: 2 elementos. A lista contém duas listas vazias.
+-- R: 2 elementos. A lista contï¿½m duas listas vazias.
 
---29. Baseado no banco de dados abaixo, elabore as seguintes funções:
---(a) Obter o número de doutores do banco de dados
---(b) Obter o número de mulheres
---(c) Obter o número de mulheres que são mestres
+--29. Baseado no banco de dados abaixo, elabore as seguintes funï¿½ï¿½es:
+--(a) Obter o nï¿½mero de doutores do banco de dados
+--(b) Obter o nï¿½mero de mulheres
+--(c) Obter o nï¿½mero de mulheres que sï¿½o mestres
 --(d) Obter o nome de todos os doutores
 
 type Matricula = Int
@@ -354,7 +365,7 @@ main = do
     putStrLn $ "A frase amanda paz invertida: " ++ show (inverter "amanda paz")
 
     putStrLn "\nQUESTAO 17 ********************************"
-    putStrLn $ "A frase amanda paz em maiuscule eh: " ++ show (primeiraMaiuscula "amanda paz")
+    putStrLn $ "A frase amanda paz em maiuscule eh: " ++ primeiraMaiuscula "     amanda     paz     "
 
     putStrLn "\nQUESTAO 18 ********************************"
     putStrLn $ "A busca binaria de 3 na lista eh: " ++ show (buscaBinaria 3 lista2)
@@ -370,7 +381,7 @@ main = do
     putStrLn $ "O nome amanda eh um palindromo? " ++ show (ehPalindromo "amanda")
 
     putStrLn "\nQUESTAO 23 ********************************"
-    putStrLn $ "Abrevie meu nome amanda oliveira da paz santos" ++ show (abreviar "amanda oliveira da paz santos")
+    putStrLn $ "Abrevie meu nome amanda oliveira da paz santos" ++ show (abreviar "amada oliveira paz")
 
     putStrLn "\nQUESTAO 24 ********************************"
     putStrLn $ "O numero 28 eh perfeito? " ++ show (ehPerfeito 28)

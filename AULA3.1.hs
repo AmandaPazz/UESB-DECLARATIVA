@@ -1,5 +1,4 @@
-
--- type Usuario = (Matricula,Nome,Curso)
+-- Define os tipos
 type Usuario = String
 type Usuarios = [Usuario]
 
@@ -9,6 +8,7 @@ type Livros = [Livro]
 type Emprestimo = (Usuario, Livro)
 type Emprestimos = [Emprestimo]
 
+-- Dados de exemplo
 emprestimos :: Emprestimos
 emprestimos = [ ("Maria","Java"),("Maria","Haskell"),("Rita","Haskell")]
 
@@ -18,6 +18,7 @@ usuarios = ["Maria","Carlos","Rita"]
 livros :: Livros
 livros = ["Haskell","Java","JavaScript","Pascal"]
 
+-- Funções para manipulação de empréstimos
 obterLivros :: Usuario -> Emprestimos -> Livros
 obterLivros usuario [] = []
 obterLivros usuario ((n,l):b)
@@ -42,9 +43,29 @@ obterUsuarios livro (a:b)
      livro' = snd a
      usuario' = fst a
 
+-- Função para repetir uma string `caractere` `numero` vezes
+repetir :: Int -> String -> String 
+repetir 0 _ = ""
+repetir numero caractere = caractere ++ repetir (numero - 1) caractere
+
+-- Tamanho da linha desejada
+tamanhoLinha :: Int 
+tamanhoLinha = 30 
+
+-- Função para formatar a lista de empréstimos
+formatarEmprestimos :: Emprestimos -> String
+formatarEmprestimos [] = []
+formatarEmprestimos ((u,l):b) =  u ++ repetir x "." ++  l ++ "\n" ++ formatarEmprestimos b
+  where
+    tamanhoUsuario = length u
+    tamanhoLivro = length l
+    x = tamanhoLinha - (tamanhoUsuario + tamanhoLivro)
+
+-- Função principal
 main :: IO ()
 main = loop emprestimos -- Chama o loop inicial com os emprestimos atuais
 
+-- Loop para interação com o usuário
 loop :: Emprestimos -> IO ()
 loop emprestimosAtuais = do
     putStrLn "\nSistema de Biblioteca"
@@ -53,7 +74,8 @@ loop emprestimosAtuais = do
     putStrLn "2. Registrar emprestimo"
     putStrLn "3. Devolver livro"
     putStrLn "4. Ver quem emprestou um livro"
-    putStrLn "5. Sair"
+    putStrLn "5. Ver todos os emprestimos"
+    putStrLn "6. Sair"
     opcao <- getLine
     case opcao of
         "1" -> do
@@ -92,7 +114,12 @@ loop emprestimosAtuais = do
                 else putStrLn $ "Usuarios que pegaram o livro '" ++ livro ++ "': " ++ show usuariosQuePegaram
             loop emprestimosAtuais
 
-        "5" -> putStrLn "Saindo do sistema. Ate mais!"
+        "5" -> do
+            putStrLn "Emprestimos atuais:"
+            putStrLn $ formatarEmprestimos emprestimosAtuais
+            loop emprestimosAtuais
+
+        "6" -> putStrLn "Saindo do sistema. Ate mais!"
 
         _ -> do
             putStrLn "Opcao invalida, tente novamente."

@@ -1,4 +1,4 @@
-import Data.Char (chr, ord, isSpace, isDigit, isAlpha, toLower, toUpper)
+import Data.Char (chr, isAlpha, isDigit, isSpace, ord, toLower, toUpper)
 
 -- Função para converter uma string no formato "dd/mm/aaaa" para componentes inteiros
 parseData :: String -> (Int, Int, Int)
@@ -13,9 +13,9 @@ diasDesdeInicio :: Int -> Int -> Int -> Int
 diasDesdeInicio dia mes ano = diasAno + diasMes + dia
   where
     -- Total de dias por ano completo
-    diasAno = ano * 360  -- Cada ano tem 360 dias (12 meses * 30 dias)
+    diasAno = ano * 360 -- Cada ano tem 360 dias (12 meses * 30 dias)
     -- Total de dias nos meses completos
-    diasMes = (mes - 1) * 30  -- Cada mês tem 30 dias
+    diasMes = (mes - 1) * 30 -- Cada mês tem 30 dias
 
 -- Função para calcular a quantidade de dias entre duas datas
 calcularDias :: [String] -> Int
@@ -34,11 +34,11 @@ vigenere texto chave = zipWith cifra (cycle chave) texto
 -- Função para converter números para texto por extenso
 extenso :: Int -> String
 extenso n
-    | n < 0 || n >= 10000 = error "Número fora do intervalo permitido (0 a 9999)"
-    | n < 20 = unidades !! n
-    | n < 100 = dezenas !! (n `div` 10) ++ (if n `mod` 10 > 0 then " e " ++ unidades !! (n `mod` 10) else "")
-    | n < 1000 = centenas !! (n `div` 100) ++ (if n `mod` 100 > 0 then " e " ++ extenso (n `mod` 100) else "")
-    | otherwise = unidades !! (n `div` 1000) ++ " mil" ++ (if n `mod` 1000 > 0 then " " ++ extenso (n `mod` 1000) else "")
+  | n < 0 || n >= 10000 = error "Numero fora do intervalo permitido (0 a 9999)"
+  | n < 20 = unidades !! n
+  | n < 100 = dezenas !! (n `div` 10) ++ (if n `mod` 10 > 0 then " e " ++ unidades !! (n `mod` 10) else "")
+  | n < 1000 = centenas !! (n `div` 100) ++ (if n `mod` 100 > 0 then " e " ++ extenso (n `mod` 100) else "")
+  | otherwise = unidades !! (n `div` 1000) ++ " mil" ++ (if n `mod` 1000 > 0 then " " ++ extenso (n `mod` 1000) else "")
   where
     unidades = ["zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove"]
     dezenas = ["", "", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa"]
@@ -55,27 +55,26 @@ contar texto = [(numCaracteres, numPalavras, numLinhas, numEspacos, numVogais, n
     numVogais = length (filter (\c -> toLower c `elem` "aeiou") texto)
     numNumeros = length (filter isDigit texto)
 
--- Função principal para teste
 main :: IO ()
 main = do
-    -- Teste da função calcularDias
-    let data1 = "10/03/1950"
-    let data2 = "28/11/1972"
-    putStrLn "\nQUESTAO 1 ********************************"
-    putStrLn $ "Calcular diferença de dias de 10/03/1950 e 28/11/1972: " ++ show (calcularDias [data1, data2])
+  -- Teste da função calcularDias
+  let data1 = "10/03/1950"
+  let data2 = "28/11/1972"
+  putStrLn "\nQUESTAO 1 ********************************"
+  putStrLn $ "Calcular diferença de dias de 10/03/1950 e 28/11/1972: " ++ show (calcularDias [data1, data2])
 
-    -- Teste da função contar
-    let texto = "Alonzo Church"
-    putStrLn "\nQUESTAO 2 ********************************"
-    putStrLn $ "Contar 'Alonzo Church': " ++ show (contar texto)
+  -- Teste da função contar
+  let texto = "Alonzo Church"
+  putStrLn "\nQUESTAO 2 ********************************"
+  putStrLn $ "Contar 'Alonzo Church': " ++ show (contar texto)
 
-    -- Teste da função vigenere
-    let textoClaro = "atacar"
-    let chave = "oi"
-    putStrLn "\nQUESTAO 3 ********************************"
-    putStrLn $ "Cifra de Vigenère de 'atacar' com chave 'oi': " ++ vigenere textoClaro chave
+  -- Teste da função vigenere
+  let textoClaro = "atacar"
+  let chave = "oi"
+  putStrLn "\nQUESTAO 3 ********************************"
+  putStrLn $ "Cifra de Vigenère de 'atacar' com chave 'oi': " ++ vigenere textoClaro chave
 
-    -- Teste da função extenso
-    let numero = 3453
-    putStrLn "\nQUESTAO 4 ********************************"
-    putStrLn $ "Número 3453 por extenso: " ++ extenso numero
+  -- Teste da função extenso
+  let numero = 3453
+  putStrLn "\nQUESTAO 4 ********************************"
+  putStrLn $ "Número 3453 por extenso: " ++ extenso numero

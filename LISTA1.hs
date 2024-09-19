@@ -9,7 +9,7 @@ type Altura = Float
 
 type Area = Float
 
--- 1 = Função para calcular a area do triangulo
+-- 1 = Funï¿½ï¿½o para calcular a area do triangulo
 areaTriangulo :: Base -> Altura -> Area
 areaTriangulo b h = (b * h) / 2.0
 
@@ -28,11 +28,11 @@ iguais4 a b c d = (a == b) && (b == c) && (d == c)
 diferentes3 :: Int -> Int -> Int -> Bool
 diferentes3 a b c = (a /= b) && (a /= c) && (c /= b)
 
--- 5 = Elaborar uma função que receba quatro números e devolva a médiaponderada, sabendo-se que os pesos são respectivamente 1,2,3 e 4.
+-- 5 = Elaborar uma funï¿½ï¿½o que receba quatro nï¿½meros e devolva a mï¿½diaponderada, sabendo-se que os pesos sï¿½o respectivamente 1,2,3 e 4.
 mediaPonderada4 :: Int -> Int -> Int -> Int -> Double
 mediaPonderada4 a b c d = fromIntegral (a + (b * 2) + (c * 3) + (d * 4)) / 10
 
--- 6 = Elaborar uma funcao que calcule do desconto de 20% do preço de um produto
+-- 6 = Elaborar uma funcao que calcule do desconto de 20% do preï¿½o de um produto
 desconto20 :: Double -> Double
 desconto20 preco = preco - (0.2 * preco)
 
@@ -44,7 +44,7 @@ xor a b = (a || b) && not (a && b)
 aritmetica :: Int -> Int -> Int
 aritmetica a1 r = a1 + (r * 9)
 
--- 9 = Elaborar uma funcao para receber um número e informar se ele eh positivo, negativo ou nulo.
+-- 9 = Elaborar uma funcao para receber um nï¿½mero e informar se ele eh positivo, negativo ou nulo.
 verificaNumero :: (Ord a, Num a) => a -> String
 verificaNumero n
   | n > 0 = "positivo"
@@ -155,7 +155,7 @@ calcularIMC peso altura
   | otherwise = "IMC invalido"
   where imc = peso / (altura * altura)
 
--- 25 = Escreva uma funcao classicarIdade :: Int -> String que classica umapessoa como "Criança", "Adolescente", "Adulto"ou "Idoso"com base
+-- 25 = Escreva uma funcao classicarIdade :: Int -> String que classica umapessoa como "Crianï¿½a", "Adolescente", "Adulto"ou "Idoso"com base
 --      na idade fornecida.
 classificarIdade :: Int -> String 
 classificarIdade idade
@@ -185,118 +185,118 @@ proximoCaractere c
 
 -- 28 = Defina:
 -- (a) Paradigma funcional
--- Um estilo de programação onde o foco está em usar funções como elementos principais.
--- As funções em linguagens funcionais são tratadas como "cidadãos de primeira classe",
--- ou seja, podem ser passadas como argumentos, retornadas de outras funções e armazenadas em variáveis.
--- O paradigma funcional enfatiza a imutabilidade e funções puras, evitando mudanças de estado
+-- Um estilo de programaï¿½ï¿½o onde o foco estï¿½ em usar funï¿½ï¿½es como elementos principais.
+-- As funï¿½ï¿½es em linguagens funcionais sï¿½o tratadas como "cidadï¿½os de primeira classe",
+-- ou seja, podem ser passadas como argumentos, retornadas de outras funï¿½ï¿½es e armazenadas em variï¿½veis.
+-- O paradigma funcional enfatiza a imutabilidade e funï¿½ï¿½es puras, evitando mudanï¿½as de estado
 -- e efeitos colaterais.
 
 -- (b) Paradigma imperativo
--- Um estilo de programação que se baseia em comandos que alteram o estado do programa.
--- Aqui, o foco está em descrever "como" fazer as coisas, usando sequências de instruções que
--- modificam variáveis e alteram o fluxo do programa. Este paradigma inclui o uso de loops,
--- variáveis mutáveis e controle explícito de fluxo, como condicionais e laços de repetição.
+-- Um estilo de programaï¿½ï¿½o que se baseia em comandos que alteram o estado do programa.
+-- Aqui, o foco estï¿½ em descrever "como" fazer as coisas, usando sequï¿½ncias de instruï¿½ï¿½es que
+-- modificam variï¿½veis e alteram o fluxo do programa. Este paradigma inclui o uso de loops,
+-- variï¿½veis mutï¿½veis e controle explï¿½cito de fluxo, como condicionais e laï¿½os de repetiï¿½ï¿½o.
 
 -- (c) Imutabilidade
--- O conceito de que, uma vez que uma variável é definida, seu valor não pode ser alterado.
--- Em um contexto funcional, imutabilidade ajuda a evitar erros relacionados ao estado mutável,
--- tornando o comportamento do programa mais previsível e confiável. Qualquer "mudança" em um valor
--- resulta na criação de um novo valor, em vez de modificar o valor original.
+-- O conceito de que, uma vez que uma variï¿½vel ï¿½ definida, seu valor nï¿½o pode ser alterado.
+-- Em um contexto funcional, imutabilidade ajuda a evitar erros relacionados ao estado mutï¿½vel,
+-- tornando o comportamento do programa mais previsï¿½vel e confiï¿½vel. Qualquer "mudanï¿½a" em um valor
+-- resulta na criaï¿½ï¿½o de um novo valor, em vez de modificar o valor original.
 
 -- (d) Efeito colateral
--- Quando uma função faz mais do que apenas devolver um valor: ela pode modificar
--- o estado do sistema, como alterar uma variável global, escrever em um arquivo ou
--- exibir algo na tela. Esses efeitos são "colaterais" porque não estão relacionados
--- ao valor retornado pela função e podem tornar o comportamento do programa menos previsível.
+-- Quando uma funï¿½ï¿½o faz mais do que apenas devolver um valor: ela pode modificar
+-- o estado do sistema, como alterar uma variï¿½vel global, escrever em um arquivo ou
+-- exibir algo na tela. Esses efeitos sï¿½o "colaterais" porque nï¿½o estï¿½o relacionados
+-- ao valor retornado pela funï¿½ï¿½o e podem tornar o comportamento do programa menos previsï¿½vel.
 
--- (e) Funções puras
--- Funções que, para o mesmo conjunto de entradas, sempre retornam o mesmo resultado
--- e não produzem efeitos colaterais. A pureza das funções facilita o entendimento e
--- a depuração do código, além de permitir otimizações, como a memoização,
--- onde o resultado de uma função pode ser armazenado e reutilizado.
+-- (e) Funï¿½ï¿½es puras
+-- Funï¿½ï¿½es que, para o mesmo conjunto de entradas, sempre retornam o mesmo resultado
+-- e nï¿½o produzem efeitos colaterais. A pureza das funï¿½ï¿½es facilita o entendimento e
+-- a depuraï¿½ï¿½o do cï¿½digo, alï¿½m de permitir otimizaï¿½ï¿½es, como a memoizaï¿½ï¿½o,
+-- onde o resultado de uma funï¿½ï¿½o pode ser armazenado e reutilizado.
 
--- (f) Transparência referencial
--- Uma propriedade de expressões em que uma expressão pode ser substituída pelo seu valor
--- sem alterar o comportamento do programa. Em outras palavras, se uma expressão E tem valor V,
--- em qualquer lugar do programa onde E aparece, pode ser substituída por V,
--- e o programa ainda funcionará da mesma maneira.
+-- (f) Transparï¿½ncia referencial
+-- Uma propriedade de expressï¿½es em que uma expressï¿½o pode ser substituï¿½da pelo seu valor
+-- sem alterar o comportamento do programa. Em outras palavras, se uma expressï¿½o E tem valor V,
+-- em qualquer lugar do programa onde E aparece, pode ser substituï¿½da por V,
+-- e o programa ainda funcionarï¿½ da mesma maneira.
 
 -- (g) Lazy evaluation
--- Um modelo de avaliação onde as expressões não são calculadas até que seus valores
--- sejam realmente necessários. Isso permite a criação de estruturas de dados infinitas,
--- e pode melhorar o desempenho, pois evita cálculos desnecessários.
+-- Um modelo de avaliaï¿½ï¿½o onde as expressï¿½es nï¿½o sï¿½o calculadas atï¿½ que seus valores
+-- sejam realmente necessï¿½rios. Isso permite a criaï¿½ï¿½o de estruturas de dados infinitas,
+-- e pode melhorar o desempenho, pois evita cï¿½lculos desnecessï¿½rios.
 
 -- (h) Eager evaluation
--- Um modelo de avaliação onde as expressões são calculadas assim que são ligadas
--- a uma variável. Este é o método padrão em muitas linguagens imperativas,
--- e pode ser mais simples de entender, mas pode levar a cálculos desnecessários,
--- especialmente se o valor de uma expressão nunca for usado.
+-- Um modelo de avaliaï¿½ï¿½o onde as expressï¿½es sï¿½o calculadas assim que sï¿½o ligadas
+-- a uma variï¿½vel. Este ï¿½ o mï¿½todo padrï¿½o em muitas linguagens imperativas,
+-- e pode ser mais simples de entender, mas pode levar a cï¿½lculos desnecessï¿½rios,
+-- especialmente se o valor de uma expressï¿½o nunca for usado.
 
--- (i) Função de Alta ordem
--- Funções que podem receber outras funções como argumentos ou retornar funções como resultado.
--- Isso permite um estilo de programação mais flexível e expressivo, onde funções podem ser
--- combinadas, aplicadas de forma condicional ou passadas como parâmetros para outras funções,
--- permitindo abstrações poderosas e reutilização de código.
-
-
+-- (i) Funï¿½ï¿½o de Alta ordem
+-- Funï¿½ï¿½es que podem receber outras funï¿½ï¿½es como argumentos ou retornar funï¿½ï¿½es como resultado.
+-- Isso permite um estilo de programaï¿½ï¿½o mais flexï¿½vel e expressivo, onde funï¿½ï¿½es podem ser
+-- combinadas, aplicadas de forma condicional ou passadas como parï¿½metros para outras funï¿½ï¿½es,
+-- permitindo abstraï¿½ï¿½es poderosas e reutilizaï¿½ï¿½o de cï¿½digo.
 
 
 
 
 
--- 29 = Pesquisar o objetivo das funções abaixo em Haskell:
+
+
+-- 29 = Pesquisar o objetivo das funï¿½ï¿½es abaixo em Haskell:
 -- (a) abs
--- A função `abs` recebe um número e retorna o seu valor absoluto, ou seja,
--- o mesmo número sem o sinal negativo. Por exemplo, `abs (-5)` retorna `5`.
+-- A funï¿½ï¿½o `abs` recebe um nï¿½mero e retorna o seu valor absoluto, ou seja,
+-- o mesmo nï¿½mero sem o sinal negativo. Por exemplo, `abs (-5)` retorna `5`.
 
 -- (b) signum
--- A função `signum` recebe um número e retorna seu "sinal".
--- Ela retorna `-1` para números negativos, `0` para zero, e `1` para números positivos.
+-- A funï¿½ï¿½o `signum` recebe um nï¿½mero e retorna seu "sinal".
+-- Ela retorna `-1` para nï¿½meros negativos, `0` para zero, e `1` para nï¿½meros positivos.
 -- Exemplo: `signum (-5)` retorna `-1`, `signum 0` retorna `0`, e `signum 5` retorna `1`.
 
 -- (c) sqrt
--- A função `sqrt` calcula a raiz quadrada de um número. Ela recebe um número
--- positivo e retorna o valor cuja raiz quadrada é o número fornecido.
+-- A funï¿½ï¿½o `sqrt` calcula a raiz quadrada de um nï¿½mero. Ela recebe um nï¿½mero
+-- positivo e retorna o valor cuja raiz quadrada ï¿½ o nï¿½mero fornecido.
 -- Exemplo: `sqrt 25` retorna `5`.
 
 -- (d) exp
--- A função `exp` calcula a exponencial de um número, ou seja, `e` elevado à
--- potência do número fornecido, onde `e` é a base dos logaritmos naturais (aproximadamente 2.71828).
+-- A funï¿½ï¿½o `exp` calcula a exponencial de um nï¿½mero, ou seja, `e` elevado ï¿½
+-- potï¿½ncia do nï¿½mero fornecido, onde `e` ï¿½ a base dos logaritmos naturais (aproximadamente 2.71828).
 -- Exemplo: `exp 1` retorna aproximadamente `2.71828`.
 
 -- (e) log
--- A função `log` calcula o logaritmo natural (ou neperiano) de um número,
--- que é o inverso da exponenciação. Ou seja, se `y = exp(x)`, então `log(y) = x`.
+-- A funï¿½ï¿½o `log` calcula o logaritmo natural (ou neperiano) de um nï¿½mero,
+-- que ï¿½ o inverso da exponenciaï¿½ï¿½o. Ou seja, se `y = exp(x)`, entï¿½o `log(y) = x`.
 -- Exemplo: `log 2.71828` retorna aproximadamente `1`.
 
 -- (f) negate
--- A função `negate` inverte o sinal de um número, transformando positivo em negativo
+-- A funï¿½ï¿½o `negate` inverte o sinal de um nï¿½mero, transformando positivo em negativo
 -- e negativo em positivo. Exemplo: `negate 5` retorna `-5`, e `negate (-5)` retorna `5`.
 
 -- (g) logBase
--- A função `logBase` calcula o logaritmo de um número em uma base específica.
--- Ela recebe dois argumentos: a base e o número do qual se deseja calcular o logaritmo.
+-- A funï¿½ï¿½o `logBase` calcula o logaritmo de um nï¿½mero em uma base especï¿½fica.
+-- Ela recebe dois argumentos: a base e o nï¿½mero do qual se deseja calcular o logaritmo.
 -- Exemplo: `logBase 10 100` retorna `2`, porque `10^2 = 100`.
 
 -- (h) floor
--- A função `floor` recebe um número real e retorna o maior inteiro que é menor ou
--- igual a esse número. Basicamente, ela arredonda o número para baixo.
+-- A funï¿½ï¿½o `floor` recebe um nï¿½mero real e retorna o maior inteiro que ï¿½ menor ou
+-- igual a esse nï¿½mero. Basicamente, ela arredonda o nï¿½mero para baixo.
 -- Exemplo: `floor 3.7` retorna `3`, e `floor (-3.7)` retorna `-4`.
 
 -- (i) ceiling
--- A função `ceiling` recebe um número real e retorna o menor inteiro que é maior ou
--- igual a esse número. Basicamente, ela arredonda o número para cima.
+-- A funï¿½ï¿½o `ceiling` recebe um nï¿½mero real e retorna o menor inteiro que ï¿½ maior ou
+-- igual a esse nï¿½mero. Basicamente, ela arredonda o nï¿½mero para cima.
 -- Exemplo: `ceiling 3.7` retorna `4`, e `ceiling (-3.7)` retorna `-3`.
 
 -- (j) round
--- A função `round` recebe um número real e o arredonda para o inteiro mais próximo.
--- Se o número estiver exatamente no meio (por exemplo, `2.5`), ela arredonda para
--- o inteiro par mais próximo. Exemplo: `round 2.3` retorna `2`, `round 2.5` retorna `2`,
+-- A funï¿½ï¿½o `round` recebe um nï¿½mero real e o arredonda para o inteiro mais prï¿½ximo.
+-- Se o nï¿½mero estiver exatamente no meio (por exemplo, `2.5`), ela arredonda para
+-- o inteiro par mais prï¿½ximo. Exemplo: `round 2.3` retorna `2`, `round 2.5` retorna `2`,
 -- e `round 3.5` retorna `4`.
 
 -- (k) truncate
--- A função `truncate` remove a parte decimal de um número real, retornando apenas a parte inteira.
--- Ela não arredonda o número, apenas corta a parte fracionária.
+-- A funï¿½ï¿½o `truncate` remove a parte decimal de um nï¿½mero real, retornando apenas a parte inteira.
+-- Ela nï¿½o arredonda o nï¿½mero, apenas corta a parte fracionï¿½ria.
 -- Exemplo: `truncate 3.7` retorna `3`, e `truncate (-3.7)` retorna `-3`.
 
 
@@ -304,30 +304,30 @@ proximoCaractere c
 
 
 
--- 30 = Qual o resultado da avaliação das expressões abaixo em Haskell?
--- (a) truncate 5.4 + oor 6.7 + ceiling 8.9 + abs (-7) + signum 8 | R = 28
+-- 30 = Qual o resultado da avaliaï¿½ï¿½o das expressï¿½es abaixo em Haskell?
+-- (a) truncate 5.4 + floor 6.7 + ceiling 8.9 + abs (-7) + signum 8 | R = 28
 -- (b) 0x + 0b1111 + 0o12
 
--- Este é um exemplo de operações com diferentes bases numéricas em Haskell.
+-- Este ï¿½ um exemplo de operaï¿½ï¿½es com diferentes bases numï¿½ricas em Haskell.
 
 -- 0x:
--- A expressão 0x por si só está incompleta, pois 0x é o prefixo para números
--- hexadecimais (base 16). Deveria haver um valor após o 0x, como por exemplo,
+-- A expressï¿½o 0x por si sï¿½ estï¿½ incompleta, pois 0x ï¿½ o prefixo para nï¿½meros
+-- hexadecimais (base 16). Deveria haver um valor apï¿½s o 0x, como por exemplo,
 -- 0xA (que seria 10 em decimal).
 
 -- 0b1111:
--- O 0b prefixa números binários (base 2).
--- 0b1111 é 15 em decimal.
+-- O 0b prefixa nï¿½meros binï¿½rios (base 2).
+-- 0b1111 ï¿½ 15 em decimal.
 
 -- 0o12:
--- O 0o prefixa números octais (base 8).
--- 0o12 é 10 em decimal.
+-- O 0o prefixa nï¿½meros octais (base 8).
+-- 0o12 ï¿½ 10 em decimal.
 
--- Mas como 0x está incompleto, o código em Haskell geraria um erro de sintaxe,
--- pois 0x precisa ser seguido por um número hexadecimal válido.
+-- Mas como 0x estï¿½ incompleto, o cï¿½digo em Haskell geraria um erro de sintaxe,
+-- pois 0x precisa ser seguido por um nï¿½mero hexadecimal vï¿½lido.
 
--- Se quisermos corrigir isso, por exemplo, se a intenção fosse usar 0xA:
--- 0xA é 10 em decimal.
+-- Se quisermos corrigir isso, por exemplo, se a intenï¿½ï¿½o fosse usar 0xA:
+-- 0xA ï¿½ 10 em decimal.
 
 -- Somando os valores:
 -- 10 (0xA) + 15 (0b1111) + 10 (0o12) = 35
@@ -336,20 +336,20 @@ proximoCaractere c
 
 
 
--- 31 = Baseado na denição da função abaixo,
+-- 31 = Baseado na deniï¿½ï¿½o da funï¿½ï¿½o abaixo,
 --              dobro x = x + x
---       Apresente algumas formas de avaliação da expressão abaixo:
+--       Apresente algumas formas de avaliaï¿½ï¿½o da expressï¿½o abaixo:
 --       dobro (dobro 2)
 
--- Definição da função dobro
+-- Definiï¿½ï¿½o da funï¿½ï¿½o dobro
 --dobro :: Int -> Int
 --dobro x = x + x
 
--- Avaliação passo a passo
--- 1. Avalie a expressão interna dobro 2
+-- Avaliaï¿½ï¿½o passo a passo
+-- 1. Avalie a expressï¿½o interna dobro 2
 -- dobro 2 = 2 + 2 = 4
 --
--- 2. Substitua dobro 2 por 4 na expressão externa
+-- 2. Substitua dobro 2 por 4 na expressï¿½o externa
 -- dobro (dobro 2) = dobro 4
 --
 -- 3. Avalie dobro 4
@@ -357,7 +357,7 @@ proximoCaractere c
 --
 -- Portanto, dobro (dobro 2) = 8
 
--- Avaliação expandida
+-- Avaliaï¿½ï¿½o expandida
 -- 1. Expanda dobro (dobro 2)
 -- dobro (dobro 2) = dobro (2 + 2)
 --
@@ -369,11 +369,11 @@ proximoCaractere c
 --
 -- Portanto, dobro (dobro 2) = 8
 
--- Avaliação por substituição
+-- Avaliaï¿½ï¿½o por substituiï¿½ï¿½o
 -- 1. Substitua dobro por x + x
 -- dobro (dobro 2) = (dobro 2) + (dobro 2)
 --
--- 2. Substitua dobro 2 por 2 + 2 em ambas as ocorrências
+-- 2. Substitua dobro 2 por 2 + 2 em ambas as ocorrï¿½ncias
 -- (2 + 2) + (2 + 2)
 --
 -- 3. Some os valores
@@ -388,7 +388,7 @@ proximoCaractere c
 
 
 
--- 32 = Como calcular a quantidade de digitos de 2 elevado a 100 em Haskell? (Dica: utilize funções prontas do Prelude)
+-- 32 = Como calcular a quantidade de digitos de 2 elevado a 100 em Haskell? (Dica: utilize funï¿½ï¿½es prontas do Prelude)
 quantidadeDigitos :: Int -> Int
 quantidadeDigitos n = length (show (2^n))
 

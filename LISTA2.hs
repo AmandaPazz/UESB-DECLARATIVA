@@ -2,7 +2,7 @@ module Lista02 where
 
 import Data.Char (isDigit, toLower, toUpper)
 
--- 1 = Denir uma função para somar todos os pares de 1 até N.
+-- 1 = Denir uma funï¿½ï¿½o para somar todos os pares de 1 atï¿½ N.
 somaPares :: Int -> Int
 somaPares 0 = 0
 somaPares n
@@ -10,35 +10,35 @@ somaPares n
   | even n = n + somaPares (n - 2)
   | odd n = somaPares (n - 1)
 
--- 2. Função para calcular x elevado a y (x^y)
+-- 2. Funï¿½ï¿½o para calcular x elevado a y (x^y)
 potencia :: Int -> Int -> Int
 potencia _ 0 = 1
 potencia x y
   | y < 0 = error "expoente negativo"
   | otherwise = x * potencia x (y - 1)
 
--- 3. Função para somar todos os números em um intervalo entre A e B, inclusive
+-- 3. Funï¿½ï¿½o para somar todos os nï¿½meros em um intervalo entre A e B, inclusive
 somaIntervalo :: Int -> Int -> Int
 somaIntervalo a b
   | a > b = error "intervalo invalido"
   | a == b = a
   | otherwise = b + somaIntervalo a (b - 1)
 
--- 4. Função para somar os dígitos de um número inteiro positivo N
+-- 4. Funï¿½ï¿½o para somar os dï¿½gitos de um nï¿½mero inteiro positivo N
 somaDigitos :: Int -> Int
 somaDigitos 0 = 0
 somaDigitos n
   | n < 0 = error "Numero negativo"
   | otherwise = mod n 10 + somaDigitos (div n 10)
 
--- 5. Função para somar os quadrados de todos os inteiros de 0 a N
+-- 5. Funï¿½ï¿½o para somar os quadrados de todos os inteiros de 0 a N
 somaQuadrados :: Int -> Int
 somaQuadrados 0 = 0
 somaQuadrados n
   | n < 0 = error "numero negativo"
   | otherwise = n * n + somaQuadrados (n - 1)
 
--- 6. Função para somar os fatoriais de todos os inteiros de 0 a N
+-- 6. Funï¿½ï¿½o para somar os fatoriais de todos os inteiros de 0 a N
 somaFatoriais :: Int -> Int
 somaFatoriais 0 = 1
 somaFatoriais n
@@ -49,31 +49,31 @@ fatorial :: Int -> Int
 fatorial 0 = 1
 fatorial n = n * fatorial (n - 1)
 
--- 7. Função para calcular uma aproximação de ? usando a série de Leibniz
+-- 7. Funï¿½ï¿½o para calcular uma aproximaï¿½ï¿½o de ? usando a sï¿½rie de Leibniz
 approxPi :: Integer -> Double
 approxPi 0 = 4.0
 approxPi n = 4 * ((-1) ^ n / fromIntegral (2 * n + 1)) + approxPi (n - 1)
 
--- 8. Função para somar dois números utilizando a função sucessor
+-- 8. Funï¿½ï¿½o para somar dois nï¿½meros utilizando a funï¿½ï¿½o sucessor
 somaComSucessor :: Int -> Int -> Int
 somaComSucessor x y
   | y == 0 = x
   | otherwise = somaComSucessor (succ x) (pred y)
 
--- 9. Função para multiplicar dois números utilizando a função soma
+-- 9. Funï¿½ï¿½o para multiplicar dois nï¿½meros utilizando a funï¿½ï¿½o soma
 multiplicaComSoma :: Int -> Int -> Int
 multiplicaComSoma x y
   | y == 0 = x
   | otherwise = x + multiplicaComSoma x (y - 1)
 
--- 10. Função que determina quantas vezes um dígito K ocorre em um número natural N
+-- 10. Funï¿½ï¿½o que determina quantas vezes um dï¿½gito K ocorre em um nï¿½mero natural N
 contaDigito :: Int -> Int -> Int
 contaDigito _ 0 = 0
 contaDigito k n
   | k == mod n 10 = 1 + contaDigito k (div n 10)
   | otherwise = contaDigito k (div n 10)
 
--- 11. Função para converter um número decimal em binário
+-- 11. Funï¿½ï¿½o para converter um nï¿½mero decimal em binï¿½rio
 decimalParaBinario :: Int -> String
 decimalParaBinario 0 = "0"
 decimalParaBinario n
@@ -81,16 +81,16 @@ decimalParaBinario n
   | n == 0 = ""
   | otherwise = decimalParaBinario (div n 2) ++ show (mod n 2)
 
--- 12. Função para concatenar uma palavra N vezes
+-- 12. Funï¿½ï¿½o para concatenar uma palavra N vezes
 concatenaPalavra :: String -> Int -> String
 concatenaPalavra _ 0 = ""
 concatenaPalavra palavra n = palavra ++ concatenaPalavra palavra (n - 1)
 
--- 13. Explicação sobre recursão de cauda
--- Recursão de cauda ocorre quando a chamada recursiva é a última coisa que acontece na função.
--- Isso permite otimizações no tempo de execução, evitando a criação de novas pilhas de chamadas.
+-- 13. Explicaï¿½ï¿½o sobre recursï¿½o de cauda
+-- Recursï¿½o de cauda ocorre quando a chamada recursiva ï¿½ a ï¿½ltima coisa que acontece na funï¿½ï¿½o.
+-- Isso permite otimizaï¿½ï¿½es no tempo de execuï¿½ï¿½o, evitando a criaï¿½ï¿½o de novas pilhas de chamadas.
 
--- 14. Função bonacci que calcula o n-ésimo número da sequência de Fibonacci usando recursão de cauda
+-- 14. Funï¿½ï¿½o bonacci que calcula o n-ï¿½simo nï¿½mero da sequï¿½ncia de Fibonacci usando recursï¿½o de cauda
 fibonacci :: Int -> Int
 fibonacci n = fiboAux n 0 1
 
@@ -98,35 +98,40 @@ fiboAux :: Int -> Int -> Int -> Int
 fiboAux 0 a _ = a
 fiboAux n a b = fiboAux (n - 1) b (a + b)
 
--- 15. Função para calcular o máximo divisor comum entre dois números usando o algoritmo de Euclides
+-- 15. Funï¿½ï¿½o para calcular o mï¿½ximo divisor comum entre dois nï¿½meros usando o algoritmo de Euclides
 mdc :: Int -> Int -> Int
 mdc a 0 = a
 mdc a b = mdc b (a `mod` b)
 
--- 16. Função para receber um número N e devolver a tabuada de N
+-- 16. Funï¿½ï¿½o para receber um nï¿½mero N e devolver a tabuada de N
 tabuada :: Int -> [String]
-tabuada n = [show n ++ " x " ++ show i ++ " = " ++ show (n * i) ++ "  |  " | i <- [1..10]]
+tabuada n = tabuadaAux n 1
+  where
+    tabuadaAux :: Int -> Int -> [String]
+    tabuadaAux _ 11 = []
+    tabuadaAux n i = (show n ++ " x " ++ show i ++ " = " ++ show (n * i) ++ " | ") : tabuadaAux n (i + 1)
 
--- 17. Função para calcular o valor de e com n termos usando a série de Taylor
+
+-- 17. Funï¿½ï¿½o para calcular o valor de e com n termos usando a sï¿½rie de Taylor
 calculaE :: Int -> Double
 calculaE 0 = 1.0
 calculaE n = 1.0 / fromIntegral (fatorial n) + calculaE (n-1)
 
--- 18. Função para montar uma tabela com os valores de e utilizando de 1 até t termos
+-- 18. Funï¿½ï¿½o para montar uma tabela com os valores de e utilizando de 1 atï¿½ t termos
 tabelaE :: Int -> [(Int, Double)]
 tabelaE t = [(i, calculaE i) | i <- [1..t]]
 
--- 19. Função para calcular a soma dos primeiros n termos da série de Taylor para o seno
+-- 19. Funï¿½ï¿½o para calcular a soma dos primeiros n termos da sï¿½rie de Taylor para o seno
 taylorSin :: Double -> Integer -> Double
 taylorSin _ 0 = 0.0
 taylorSin x n = ((-1) ^ n) * x^(2 * n + 1) / fromIntegral (fatorial (2 * fromIntegral n + 1)) + taylorSin x (n-1)
 
--- 20. Função para calcular a soma dos primeiros n termos da série de Taylor para o cosseno
+-- 20. Funï¿½ï¿½o para calcular a soma dos primeiros n termos da sï¿½rie de Taylor para o cosseno
 taylorCos :: Double -> Integer -> Double
 taylorCos _ 0 = 1.0
 taylorCos x n = ((-1) ^ n) * x^(2 * n) / fromIntegral (fatorial (2 * fromIntegral n)) + taylorCos x (n-1)
 
--- 21. Função para calcular a média das vendas e o desvio padrão
+-- 21. Funï¿½ï¿½o para calcular a mï¿½dia das vendas e o desvio padrï¿½o
 tamanhoLinha :: Int
 tamanhoLinha = 30
 
@@ -189,7 +194,7 @@ dia 2 = "Quarta"
 dia 3 = "Quinta"
 dia 4 = "Sexta"
 
--- Funções para calcular média e desvio padrão
+-- Funï¿½ï¿½es para calcular mï¿½dia e desvio padrï¿½o
 
 mediaVendas :: Int -> Double
 mediaVendas n = fromIntegral (somavendas n) / fromIntegral (n + 1)
@@ -200,14 +205,14 @@ desvioPadraoVendas n = sqrt (variancia / fromIntegral (n + 1))
     media = mediaVendas n
     variancia = sum [(fromIntegral (vendas i) - media) ^ 2 | i <- [0..n]]
 
--- Funções de soma de vendas
+-- Funï¿½ï¿½es de soma de vendas
 
 somavendas :: Int -> Int
 somavendas n
    | n == 0 = vendas 0
    | otherwise = vendas n + somavendas (n-1)
 
--- Definindo a função recursiva para cálculo da soma das vendas
+-- Definindo a funï¿½ï¿½o recursiva para cï¿½lculo da soma das vendas
 
 somavendas' :: Int -> Int
 somavendas' 0 = vendas 0

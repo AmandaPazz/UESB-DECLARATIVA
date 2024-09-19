@@ -1,11 +1,11 @@
-type Nome = String 
-type Preco = Int 
-type CodigoBarra = Int 
-type BancoDeDados = [(CodigoBarra, Nome, Preco)] 
+type Nome = String
+type Preco = Int
+type CodigoBarra = Int
+type BancoDeDados = [(CodigoBarra, Nome, Preco)]
 
-bd :: BancoDeDados 
-bd = [(1001, "Refrigerante", 450), 
-      (1002, "Leite", 320), 
+bd :: BancoDeDados
+bd = [(1001, "Refrigerante", 450),
+      (1002, "Leite", 320),
       (1003, "Biscoito", 200),
       (1004, "Suco", 989),
       (1005, "Arroz", 345),
@@ -20,52 +20,51 @@ bd = [(1001, "Refrigerante", 450),
 -- Questao 01
 buscarBDaux :: CodigoBarra -> BancoDeDados -> (Nome, Preco)
 buscarBDaux _ [] = error "Produto nao cadastrado!!!"
-buscarBDaux codigo ((codigoBarra, nome, preco) : resto) 
+buscarBDaux codigo ((codigoBarra, nome, preco) : resto)
   | codigo == codigoBarra = (nome, preco)
-  | otherwise = buscarBDaux codigo resto 
+  | otherwise = buscarBDaux codigo resto
 
 -- Questao 02
-buscaBD :: CodigoBarra -> (Nome, Preco) 
-buscaBD codigo = buscarBDaux codigo bd 
+buscaBD :: CodigoBarra -> (Nome, Preco)
+buscaBD codigo = buscarBDaux codigo bd
 
 -- Questao 03
 fazerConta :: [CodigoBarra] -> [(Nome, Preco)]
-fazerConta [] = []
-fazerConta (codigo:restante) = buscaBD codigo : fazerConta restante
+fazerConta = map buscaBD
 
 -- Questao 04
-dividir :: Int -> String 
+dividir :: Int -> String
 dividir numero = show (div numero 100) ++ "." ++ show (mod numero 100)
 
 -- Questao 05
-repetir :: Int -> String -> String 
+repetir :: Int -> String -> String
 repetir 0 _ = ""
 repetir numero caractere = caractere ++ repetir (numero -1) caractere
 
 -- Questao 06 
-tamanhoLinha :: Int 
-tamanhoLinha = 30 
+tamanhoLinha :: Int
+tamanhoLinha = 30
 
-formatarLinha :: (Nome, Preco) -> String 
-formatarLinha (nome, preco) = nome ++ repetir quantidade "." ++ dividir preco ++ "\n" 
+formatarLinha :: (Nome, Preco) -> String
+formatarLinha (nome, preco) = nome ++ repetir quantidade "." ++ dividir preco ++ "\n"
   where
  -- a linha tem que ser de tamanho = 30, logo temos que desconsiderar o tamanho do nome e do preco  
-  tamanhoNome = length nome  
+  tamanhoNome = length nome
   tamanhoPreco = length (dividir preco)
   quantidade = tamanhoLinha - (tamanhoNome + tamanhoPreco)
 
 -- Questao 07 
-formatarLinhas :: [(Nome, Preco)] -> String 
-formatarLinhas [] = ""
-formatarLinhas ((nome, preco) : restanteLista) = formatarLinha (nome, preco) ++ formatarLinhas restanteLista
+formatarLinhas :: [(Nome, Preco)] -> String
+formatarLinhas [] = []
+formatarLinhas (a : x) = formatarLinha a ++ formatarLinhas x
 
 -- Questao 08
-calcularTotal :: [ (Nome, Preco) ] -> Int 
-calcularTotal [] = 0 
-calcularTotal ((nome, preco) : restanteLista) = preco + calcularTotal restanteLista
+calcularTotal :: [ (Nome, Preco) ] -> Int
+calcularTotal [] = 0
+calcularTotal ((nome, preco) : x) = preco + calcularTotal x
 
 -- Questao 09 
-formatarTotal :: Int -> String 
+formatarTotal :: Int -> String
 -- Um comportamento muito similar de uma funcao ja criada...
 formatarTotal valorTotal = formatarLinha ("Total:", valorTotal)
 
@@ -79,10 +78,10 @@ formatarTotal valorTotal = "Total:" ++ repetir quantidade "." ++ dividir valorTo
 -}
 
 -- Questao 10 
-formatarConta :: [(Nome, Preco)] -> String 
-formatarConta lista = formatarLinhas lista ++ formatarTotal(calcularTotal lista)
+formatarConta :: [(Nome, Preco)] -> String
+formatarConta lista = formatarLinhas lista ++ formatarTotal (calcularTotal lista)
 
-imprimirConta :: [CodigoBarra] -> IO() 
+imprimirConta :: [CodigoBarra] -> IO()
 imprimirConta lista = putStr (formatarConta (fazerConta lista))
 
 main :: IO ()
@@ -98,28 +97,28 @@ main = do
     putStrLn "\nTeste da funcao buscaBD:"
     print $ buscaBD 1003  -- Esperado: ("Biscoito", 200)
     print $ buscaBD 1004  -- Esperado: ("Suco", 989)
-    
+
     -- Testar fazerConta
     putStrLn "\nTeste da funcao fazerConta:"
     print $ fazerConta [1005, 1006]  -- Esperado: [("Arroz", 345), ("Feijao", 780)]
-    
+
     -- Testar dividir
     putStrLn "\nTeste da funcao dividir:"
     print $ dividir 450  -- Esperado: "4.50"
     print $ dividir 320  -- Esperado: "3.20"
-    
+
     -- Testar repetir
     putStrLn "\nTeste da funcao repetir:"
     print $ repetir 5 "*"  -- Esperado: "*****"
-    
+
     -- Testar formatarLinha
     putStrLn "\nTeste da funcao formatarLinha:"
     print $ formatarLinha ("Refrigerante", 450)  -- Esperado: "Refrigerante........4.50\n"
     print $ formatarLinha ("Leite", 320)         -- Esperado: "Leite................3.20\n"
-    
+
     -- Testar formatarLinhas
     putStrLn "\nTeste da funcao formatarLinhas:"
-    print $ formatarLinhas [("Arroz", 345), ("Feijao", 780)]  
+    print $ formatarLinhas [("Arroz", 345), ("Feijao", 780)]
     -- Esperado:
     -- "Arroz................3.45\nFeijao...............7.80\n"
 
@@ -130,7 +129,7 @@ main = do
     -- Testar formatarTotal
     putStrLn "\nTeste da funcao formatarTotal:"
     print $ formatarTotal 1125  -- Esperado: "Total...............11.25\n"
-    
+
     -- Testar formatarConta
     putStrLn "\nTeste da funcao formatarConta:"
     let conta = [("Arroz", 345), ("Feijao", 780)]
