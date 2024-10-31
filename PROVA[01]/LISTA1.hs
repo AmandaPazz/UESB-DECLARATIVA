@@ -1,5 +1,3 @@
-module Lista01 where
-
 import Data.Char (isDigit, toLower, toUpper)
 
 -- Definindo os tipos para base, altura e area
