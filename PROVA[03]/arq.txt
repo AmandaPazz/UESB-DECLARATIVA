@@ -1,0 +1,3 @@
+pais(joao,maria,isabel).
+pais(eduardo,ruan,luana).
+pais(dimitri,ze,gilvana).
